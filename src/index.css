@@ -2,24 +2,5 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Harmonia Sans', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
-
-/* @font-face {
-  font-family: 'Harmonia Sans';
-  src: url('/assets/fonts/HarmoniaSans/HarmoniaSans-Regular.woff2') format('woff2'),
-       url('/assets/fonts/HarmoniaSans/HarmoniaSans-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Harmonia Sans';
-  src: url('/assets/fonts/HarmoniaSans/HarmoniaSans-Bold.woff2') format('woff2'),
-       url('/assets/fonts/HarmoniaSans/HarmoniaSans-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-} */
-

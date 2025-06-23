@@ -7,17 +7,21 @@ const Layout = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  // Rutas donde darkMode debe ser true y fixed false
+  // aca agrego todas las rutas donde el darkmode tiene que ser true
   const darkModeRoutes = [
     '/cart',
     '/products',
     '/search',
     '/admin',
     '/login',
+    '/register',
+    '/about',
+    '/contact',
+    '/safedata',
+    '/sendmessage'
   ];
 
-  // Para rutas dinámicas como /product/:id
-  // detectamos si empieza con /product para aplicar darkmode true, fixed false
+  // detecto si empieza con /product para aplicar darkmode true, fixed false
   const isProductDetail = path.startsWith('/product/');
 
   const isHomePage = path === '/';

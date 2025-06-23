@@ -1,0 +1,51 @@
+.data-safe {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #111;
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #0071ce;
+}
+
+.main-title {
+  font-size: 28px;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.data-safe p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.data-safe ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.data-safe ul li {
+  list-style-type: disc;
+  margin-bottom: 10px;
+}
+
+.privacy-link {
+  color: #0071ce;
+  text-decoration: none;
+}
+
+.privacy-link:hover {
+  text-decoration: underline;
+}

@@ -38,6 +38,7 @@ const Cart = () => {
                   <p>Cantidad: {item.quantity}</p>
                   <p>Precio unitario: ${item.price}</p>
                   <p>Subtotal: ${item.price * item.quantity}</p>
+                  <p>Stock Actual en sucursal: {item.stock}</p>
                 </div>
               </div>
             ))}

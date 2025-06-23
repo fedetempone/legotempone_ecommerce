@@ -11,14 +11,9 @@ const Gallery = () => {
   const [quantities, setQuantities] = useState({});
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
-  console.log("variable api url es:", API_URL);
 
   useEffect(() => {
     const loadProductsFromLocalStorage = () => {
-
-      // 1. primero pruebo buscar los productos en localstorage porque cuando cargeu la pagina 
-      // por primera vez me deberia haber cargado los productos en el gallery y se deberian haber guardado
-      // en el localstorage
       const stored = localStorage.getItem("products");
       if (stored) {
         try {
@@ -32,27 +27,27 @@ const Gallery = () => {
             return true;
           }
         } catch {
-          console.warn("no se puede leer correctamente LOCALSTORAGE, entonces lo borro para limpiar datos");
+          console.warn(
+            "No se pudo leer correctamente localStorage, limpiando datos"
+          );
           localStorage.removeItem("products");
         }
       }
       return false;
     };
-    // 2. si no encontro los productos en el localstorage porq es accedio a /products directamente
-    // o porque se borro el localstorga de manera manual.. .entonces ahi si ejecuto consulta a la base de datos
+
     if (!loadProductsFromLocalStorage()) {
       axios
         .get(`${API_URL}/api/products`)
         .then((res) => {
           const { products } = res.data;
-          console.log(`productos obtenidos desde ${API_URL}`);
+          console.log(`Productos obtenidos desde ${API_URL}`);
           setProducts(products);
           localStorage.setItem("products", JSON.stringify(products));
           const initialQuantities = {};
           products.forEach((p) => (initialQuantities[p.id] = 1));
           setQuantities(initialQuantities);
         })
-        // 3. si hubo un problema con la conexion al a base de datos entonces uso mi fallback local
         .catch((err) => {
           console.error("Error backend, cargando productos locales:", err);
           setProducts(localProducts);
@@ -81,7 +76,9 @@ const Gallery = () => {
 
   const addToCart = (product, quantity) => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProduct = cart.find((item) => item._id === product._id);
+    // Ojo que el backend puede usar _id, pero en tu products usás id,
+    // ajustá según cómo sea el identificador en tu objeto product.
+    const existingProduct = cart.find((item) => item.id === product.id);
 
     if (existingProduct) {
       existingProduct.quantity += quantity;
@@ -90,7 +87,6 @@ const Gallery = () => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-
     setSelectedProduct({ ...product, quantity });
     setIsAdded(true);
   };
@@ -101,47 +97,56 @@ const Gallery = () => {
         <h2>Mira todos los productos que tenemos para vos ♡</h2>
       </div>
       <div className="gallery-container">
-        {products.map((product) => {
-          const quantity = quantities[product.id] || 1;
-          const totalPrice = product.price * quantity;
+        {products.length === 0 ? (
+          <p>Cargando productos...</p>
+        ) : (
+          products.map((product) => {
+            const quantity = quantities[product.id] || 1;
+            const totalPrice = product.price * quantity;
 
-          return (
-            <div className="product-card" key={product.id}>
-              <img
-                src={product.img}
-                alt={product.description}
-                className="product-image"
-              />
-              <div className="product-details">
-                <h3 className="product-title">{product.description}</h3>
-                <p className="product-price">${totalPrice}</p>
+            return (
+              <div className="product-card" key={product.id}>
+                <img
+                  src={product.img}
+                  alt={product.description}
+                  className="product-image"
+                />
+                <div className="product-details">
+                  <h3 className="product-title">{product.description}</h3>
+                  <p className="product-price">${totalPrice}</p>
 
-                <div className="quantity-controls">
+                  <div className="quantity-controls">
+                    <button
+                      className="addButton"
+                      onClick={() => decrement(product.id)}
+                    >
+                      -
+                    </button>
+                    <input type="number" value={quantity} min="1" readOnly />
+                    <button
+                      className="substractButton"
+                      onClick={() => increment(product.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div className="gallerystock">
+                    <h3 className="stockquantity">Stock actual: {product.stock}</h3>
+                  </div>
+
                   <button
-                    className="addButton"
-                    onClick={() => decrement(product.id)}
+                    className="css-button-sliding-to-bottom--sky"
+                    onClick={() => addToCart(product, quantity)}
+                    disabled={product.stock === 0}
+                    title={product.stock === 0 ? "Producto sin stock" : ""}
                   >
-                    -
-                  </button>
-                  <input type="number" value={quantity} min="1" readOnly />
-                  <button
-                    className="substractButton"
-                    onClick={() => increment(product.id)}
-                  >
-                    +
+                    Añadir al carrito
                   </button>
                 </div>
-
-                <button
-                  className="css-button-sliding-to-bottom--sky"
-                  onClick={() => addToCart(product, quantity)}
-                >
-                  Añadir al carrito
-                </button>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
 
         {isAdded && selectedProduct && (
           <div className="added-notification">

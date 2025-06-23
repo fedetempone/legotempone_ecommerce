@@ -1,0 +1,178 @@
+.contact-section {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.contact-box {
+  background-color: #76c3ee;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.contact-img img {
+  width: 280px;
+  height: auto;
+  display: block;
+}
+
+.contact-content {
+  max-width: 500px;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.contact-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.contact-content p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/*boton estilizado de enviar mensaje*/
+
+.css-button-arrow--grey {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+  line-height: 40px;
+  outline: none;
+  overflow: hidden;
+  border-radius: 5px;
+  border: none;
+  background-color: #2f4f60;
+}
+
+.css-button-arrow--grey:hover {
+  border-radius: 5px;
+  padding-right: 35px;
+  padding-left: 16px;
+}
+
+.css-button-arrow--grey:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+.css-button-arrow--grey:after {
+  content: "\00BB";
+  position: absolute;
+  opacity: 0;
+  font-size: 20px;
+  line-height: 40px;
+  top: 0;
+  right: -20px;
+  transition: 0.4s;
+}
+
+/*seccion aprende mas destkop*/
+.learnBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  max-width: 650px;
+  margin: 0px auto;
+  padding: 0 var(--ds-spacing-md) 0;
+}
+
+.learnMoreLink {
+  background-color: #f2f2f2;
+  color: #000;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.learnMoreLink:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  text-decoration: underline;
+}
+
+.learnMoreLink a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .contact-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-content {
+    text-align: center;
+  }
+
+  .contact-img img {
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .contact-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .contact-content p {
+    font-size: 0.95rem;
+  }
+
+  .learnBox {
+    max-width: 300px;
+    padding: 1rem;
+  }
+
+  .learnMoreLink {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .contact-section {
+    padding: 0;
+  }
+
+  .contact-title {
+    font-size: 1.4rem;
+  }
+
+  .css-button-arrow--grey {
+    font-size: 0.6rem;
+  }
+}

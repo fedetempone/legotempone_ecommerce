@@ -20,7 +20,17 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
-  }
+  },
+    stock: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    detail: { 
+      type: String,
+      required: false,
+      default: "",
+    },
 },
 {
   collection: 'LegoProducts' 

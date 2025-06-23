@@ -1,4 +1,5 @@
-import { useAuth } from '../AuthContext';
+import { useAuth } from '../../context/AuthContext';
+import AdminPanel from './AdminPanel';
 
 const Admin = () => {
   const { logout } = useAuth();
@@ -7,9 +8,9 @@ const Admin = () => {
     <>
       <div>
         <h1>Panel de Administración</h1>
-        <button onClick={logout}>Cerrar sesión</button>
-        <h4>DESPUES HAGO ALGO MAS COMPLETO, SOLO ESTOY CUMPLIENDO EL REQUISITO</h4>
+        <button className='btn-sesionClose admin-button' onClick={logout}>Cerrar sesión</button>
       </div>
+      <AdminPanel />
     </>
   );
 };

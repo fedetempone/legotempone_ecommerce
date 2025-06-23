@@ -1,0 +1,109 @@
+.admin-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admin-container h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.admin-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.admin-product-card {
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.admin-product-card:hover {
+  box-shadow: 0 12px 25px rgba(44, 62, 80, 0.3);
+  transform: translateY(-6px);
+  cursor: default;
+}
+
+.admin-product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.admin-input,
+.admin-textarea {
+  width: 90%;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.admin-textarea {
+  min-height: 60px;
+}
+
+.admin-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2c3e50;
+  color: white;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+}
+
+.admin-button:hover {
+  background-color: #34495e;
+  color: #ecf0f1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(52, 73, 94, 0.4);
+}
+
+.admin-button.admin-delete {
+  background: #c0392b;
+}
+
+.admin-button.admin-delete:hover {
+  background-color: #e74c3c;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.6);
+}
+
+.admin-create-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.admin-new-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.admin-stock-helper{
+  display: flex;
+  height: 5px;
+  font-size: 13px;
+}

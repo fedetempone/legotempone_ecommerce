@@ -45,10 +45,11 @@ const ProductDetail = () => {
                 <h2>{product.description}</h2>
                 <p>Precio: ${product.price}</p>
                 <p>{product.category}</p>
-                <p>{product.details || "POR EL MOMENTO NO LE PUSE DESCRIPCION, LUEGO LE AGREGO UNA DESCRIPCION TOMADA DIRECTAMENTE DE LA BASE DE DATOS, A TRAVES DE SU ID"}</p>
+                <p>{product.detail}</p>
+                <p style={{fontWeight: 'bold'}}>STOCK ACTUAL EN SUCURSAL: {product.stock} unidades</p>
                 <div className="quantity-controls">
                     <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-                    <input type="number" value={quantity} min="1" readOnly />
+                    <input id="quantityInput" type="number" value={quantity} min="1" readOnly />
                     <button onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
                 <button

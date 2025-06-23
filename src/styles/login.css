@@ -1,0 +1,107 @@
+/* contenedor principal */
+.login-container {
+  max-width: 380px;
+  margin: 5vh auto;
+  padding: 2.5rem 2rem 3rem;
+  background: #1a1a2e;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+/* titulo*/
+.login-container h2 {
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: #f5f6fa;
+  text-shadow: 0 1px 3px #0f3460;
+}
+
+/* formulario */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+/* inputs */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.05rem;
+  background: #16213e;
+  color: #f0f0f0;
+  box-shadow:
+    inset 2px 2px 5px #0c0c22,
+    inset -2px -2px 5px #2c2f53;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* placeholder*/
+.login-container input::placeholder {
+  color: #8892b0;
+  font-weight: 500;
+}
+
+/* focus  */
+.login-container input:focus {
+  outline: none;
+  box-shadow:
+    inset 2px 2px 5px #0c0c22,
+    inset -2px -2px 5px #2c2f53,
+    0 0 8px 2px #00aaffcc;
+  background-color: #1f2a65;
+  color: #fff;
+}
+
+/* botón principal con efecto */
+.login-container button {
+  padding: 0.95rem 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #00aaff, #005f99);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 12px #00aaff99;
+  transition: background 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* hover del boton */
+.login-container button:hover:not(:disabled) {
+  background: linear-gradient(45deg, #0077cc, #004d66);
+  box-shadow: 0 8px 20px #0077ccbb;
+  transform: translateY(-2px);
+}
+
+/* boton de disable */
+.login-container button:disabled {
+  background: #555a75;
+  cursor: not-allowed;
+  box-shadow: none;
+  color: #bbb;
+  transform: none;
+}
+
+/* mensaje de error */
+.login-container p {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #ff4d6d;
+  text-shadow: 0 0 4px #ff4d6daa;
+}
+
+/* mobile */
+@media (max-width: 400px) {
+  .login-container {
+    margin: 3vh 1rem;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}

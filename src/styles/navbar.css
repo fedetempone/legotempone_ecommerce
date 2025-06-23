@@ -26,24 +26,17 @@
   background-color: white;
 }
 
-/* .navbar-content {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-
 .navbar-content {
   width: 100%;
-  max-width: 100vw; /* Aseguramos que no se pase */
+  max-width: 100vw; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px; /* padding para que no toque los bordes */
-  box-sizing: border-box; /* para que padding no genere overflow */
+  padding: 0 20px; 
+  box-sizing: border-box; 
 }
 
-/* Dark mode */
+/* dark mode */
 .navbar.dark-navbar {
   background-color: #242424 !important;
   padding: 20px;
@@ -238,21 +231,6 @@
     display: none;
   }
 
-  /* este andaba bien son en el inicio, pero en productos se rompia un toque 
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: -75px;
-    padding-top: 190px !important;
-    left: 0;
-    right: 0;
-    background-color: #333;
-    height: calc(100vh - 120px);
-    z-index: 9998;
-    align-items: center;
-    justify-content: flex-start;
-  } */
   .nav-links.open {
     display: flex;
     flex-direction: column;
