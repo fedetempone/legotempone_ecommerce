@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/sendmessage.css";
+import "../../styles/sendMessage.css";
 
 const SendMessage = () => {
     const [email, setEmail] = useState("");
