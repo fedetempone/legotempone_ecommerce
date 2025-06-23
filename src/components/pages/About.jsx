@@ -5,7 +5,7 @@ const About = () => {
     <section className="about-section">
       <div className="about-container">
         <div className="about-image">
-          <img src="/public/img/aboutLego.jpg" alt="Equipo de LEGOTEMPONE" />
+          <img src="/img/aboutLego.jpg" alt="Equipo de LEGOTEMPONE" />
         </div>
         <div className="about-content">
           <h2>Sobre LEGOTEMPONE</h2>
