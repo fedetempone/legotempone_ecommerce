@@ -10,10 +10,12 @@ const Gallery = () => {
   const [isAdded, setIsAdded] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantities, setQuantities] = useState({});
+  const [loading, setLoading] = useState(true); 
+
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const { addToCart } = useContext(CartContext); 
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const loadProductsFromLocalStorage = () => {
@@ -26,6 +28,7 @@ const Gallery = () => {
             const initialQuantities = {};
             parsed.forEach((p) => (initialQuantities[p.id] = 1));
             setQuantities(initialQuantities);
+            setLoading(false); 
             return true;
           }
         } catch {
@@ -46,6 +49,7 @@ const Gallery = () => {
           const initialQuantities = {};
           products.forEach((p) => (initialQuantities[p.id] = 1));
           setQuantities(initialQuantities);
+          setLoading(false);
         })
         .catch(() => {
           setProducts(localProducts);
@@ -53,6 +57,7 @@ const Gallery = () => {
           const initialQuantities = {};
           localProducts.forEach((p) => (initialQuantities[p.id] = 1));
           setQuantities(initialQuantities);
+          setLoading(false); 
         });
     }
   }, [API_URL]);
@@ -77,57 +82,62 @@ const Gallery = () => {
     setIsAdded(true);
   };
 
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <div className="spinner"></div>
+        <p className="loading-text">Cargando productos, por favor espere...</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="galleryTitle">
         <h2>Mira todos los productos que tenemos para vos ♡</h2>
       </div>
       <div className="gallery-container">
-        {products.length === 0 ? (
-          <p>Cargando productos...</p>
-        ) : (
-          products.map((product) => {
-            const quantity = quantities[product.id] || 1;
-            const totalPrice = product.price * quantity;
+        {products.map((product) => {
+          const quantity = quantities[product.id] || 1;
+          const totalPrice = product.price * quantity;
 
-            return (
-              <div className="product-card" key={product.id}>
-                <img
-                  src={product.img}
-                  alt={product.description}
-                  className="product-image"
-                />
-                <div className="product-details">
-                  <h3 className="product-title">{product.description}</h3>
-                  <p className="product-price">${totalPrice}</p>
+          return (
+            <div className="product-card" key={product.id}>
+              <img
+                src={product.img}
+                alt={product.description}
+                className="product-image"
+              />
+              <div className="product-details">
+                <h3 className="product-title">{product.description}</h3>
+                <p className="product-price">${totalPrice}</p>
 
-                  <div className="quantity-controls">
-                    <button className="addButton" onClick={() => decrement(product.id)}>
-                      -
-                    </button>
-                    <input type="number" value={quantity} readOnly />
-                    <button className="substractButton" onClick={() => increment(product.id)}>
-                      +
-                    </button>
-                  </div>
-
-                  <div className="gallerystock">
-                    <h3 className="stockquantity">Stock actual: {product.stock}</h3>
-                  </div>
-
-                  <button
-                    className="css-button-sliding-to-bottom--sky"
-                    onClick={() => handleAddToCart(product, quantity)}
-                    disabled={product.stock === 0}
-                    title={product.stock === 0 ? "Producto sin stock" : ""}
-                  >
-                    Añadir al carrito
+                <div className="quantity-controls">
+                  <button className="addButton" onClick={() => decrement(product.id)}>
+                    -
+                  </button>
+                  <input type="number" value={quantity} readOnly />
+                  <button className="substractButton" onClick={() => increment(product.id)}>
+                    +
                   </button>
                 </div>
+
+                <div className="gallerystock">
+                  <h3 className="stockquantity">Stock actual: {product.stock}</h3>
+                </div>
+
+                <button
+                  className="css-button-sliding-to-bottom--sky"
+                  onClick={() => handleAddToCart(product, quantity)}
+                  disabled={product.stock === 0}
+                  title={product.stock === 0 ? "Producto sin stock" : ""}
+                >
+                  Añadir al carrito
+                </button>
               </div>
-            );
-          })
-        )}
+            </div>
+          );
+        })}
 
         {isAdded && selectedProduct && (
           <div className="added-notification">
