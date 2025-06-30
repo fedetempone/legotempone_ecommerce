@@ -62,7 +62,7 @@ You can access the deployed version of this project here:
 
 ## Demo
 
-![Lego Harry Potter Demo](https://media.giphy.com/media/mEDQK7yq11ekm28bG1/giphy.gif)
+![Lego Harry Potter Demo](https://media.giphy.com/media/mEDQK7yq11ekm28bG1/giphy-downsized.gif)
 
 ---
 
@@ -71,6 +71,5 @@ You can access the deployed version of this project here:
 **Ante cualquier inquietud siéntase en la libertad de consultar.**  
 **_¡Si se puede imaginar, se puede programar!_**
 
-**_Saludos cordiales!_**  
-![saludos](https://img.icons8.com/ios/20/star-trek-gesture.png)
+**_Saludos cordiales!_**  ![saludos](https://img.icons8.com/ios/20/star-trek-gesture.png)
 
