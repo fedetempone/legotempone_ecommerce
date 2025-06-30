@@ -104,4 +104,7 @@
     margin: 3vh 1rem;
     padding: 2rem 1.5rem 2.5rem;
   }
+  .navbar .search-icon:hover {
+        color: #007bff;
+    }
 }

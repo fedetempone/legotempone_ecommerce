@@ -23,14 +23,14 @@ const Layout = () => {
 
   // detecto si empieza con /product para aplicar darkmode true, fixed false
   const isProductDetail = path.startsWith('/product/');
-
+  const isInfoPage = path.startsWith('/info');
   const isHomePage = path === '/';
 
   // fixed true solo en home
   const fixed = isHomePage;
 
   // darkMode true para estas rutas y product detail, false en home
-  const darkMode = isHomePage ? false : darkModeRoutes.includes(path) || isProductDetail;
+  const darkMode = isHomePage ? false : darkModeRoutes.includes(path) || isProductDetail || isInfoPage;
 
   return (
     <>

@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../../styles/products.css";
 import "../../styles/productDetail.css";
 import { Link, useNavigate } from "react-router-dom";
 import localProducts from "../../../backend/data/products";
+import { CartContext } from "../../context/CartContext"; // importo el contexto
 
 const Productos = () => {
   const [products, setProducts] = useState([]);
@@ -14,6 +15,8 @@ const Productos = () => {
   const [error, setError] = useState(null);
   const [fakeLoading, setFakeLoading] = useState(true);
   const navigate = useNavigate();
+
+  const { addToCart } = useContext(CartContext); // extraigo addToCart del contexto
 
   useEffect(() => {
     const timer = setTimeout(() => setFakeLoading(false), 3000);
@@ -26,9 +29,6 @@ const Productos = () => {
         const stored = localStorage.getItem("products");
         let parsed = null;
 
-        // 1. primero pruebo buscar los productos en localstorage porque cuando cargeu la pagina 
-        // por primera vez me deberia haber cargado los productos en el gallery y se deberian haber guardado
-        // en el localstorage
         try {
           parsed = stored ? JSON.parse(stored) : null;
           if (!Array.isArray(parsed) || parsed.length === 0) {
@@ -48,8 +48,6 @@ const Productos = () => {
           return;
         }
 
-        // 2. si no encontro los productos en el localstorage porq es accedio a /products directamente
-        // o porque se borro el localstorga de manera manual.. .entonces ahi si ejecuto consulta a la base de datos
         console.log("🌐 Buscando productos en mongodb...");
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         const productsFromAPI = res.data.products;
@@ -61,14 +59,14 @@ const Productos = () => {
           setLoading(false);
           return;
         }
-        // 3. si hubo un problema con la conexion al a base de datos entonces uso mi fallback local
+
         console.warn("📦 Usando fallback local (ni localStorage ni API disponibles)");
         setProducts(localProducts);
         initQuantities(localProducts);
         setLoading(false);
 
       } catch (err) {
-        console.error("❌ Error al obtener productos:", err);
+        // console.error("❌ Error al obtener productos:", err);
         setError("Error al obtener productos");
         setLoading(false);
       }
@@ -97,17 +95,9 @@ const Productos = () => {
     }));
   };
 
-  const addToCart = (product, quantity) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existing = cart.find(item => item.id === product.id);
-
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      cart.push({ ...product, quantity });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
+  // funcion para agregar al carrito usando el contexto
+  const handleAddToCart = (product, quantity) => {
+    addToCart(product, quantity);  // aca uso el contexto para agregar al carrito
     setSelectedProduct({ ...product, quantity });
     setIsAdded(true);
   };
@@ -150,7 +140,7 @@ const Productos = () => {
 
                 <button
                   className="css-button-sliding-to-bottom--sky"
-                  onClick={() => addToCart(product, quantity)}
+                  onClick={() => handleAddToCart(product, quantity)}
                 >
                   Añadir al carrito
                 </button>

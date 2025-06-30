@@ -55,7 +55,7 @@
 .navbar.dark-navbar:hover .search-icon,
 .navbar.dark-navbar:hover .cart-icon,
 .navbar.dark-navbar:hover .nav-links li a {
-  color: white !important;
+  color: white;
 }
 
 .navbar.dark-navbar .nav-links li a:hover::after {
@@ -257,6 +257,10 @@
     width: 100px;
   }
 
+  .search-icon{
+    padding-top: 4px;
+  }
+
   .navbar:hover {
     background-color: transparent;
   }
@@ -311,5 +315,24 @@
 
   .search-form-desktop.show-desktop {
     display: inline-block;
+  }
+
+  .navbar .cart-icon:hover {
+    color: #007bff !important;
+}
+
+  .navbar .search-icon:hover {
+    color: #007bff !important;
+}
+
+}
+
+@media (min-width: 769px) and (max-width: 990px){
+  .desktop-icons{
+    flex-direction: column;
+  }
+
+  .search-input-desktop{
+    width: 65px;
   }
 }

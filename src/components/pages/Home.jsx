@@ -27,10 +27,11 @@ const Home = () => {
       <li>Deploy realizado en Render</li>
       <li>Panel de Admin Completo</li>
       <li>Menu de Navegación completamente navegable</li>
-      <li>El footer por el momento no tiene interaccion</li>
+      <li>Footer completamenete interactivo</li>
       <li>Login para ingresar a panel administrativo</li>
       <li>Register para registrarse como admin</li>
       <li>Decidí no validar peticiones para crear un admin nuevo</li>
+      <li>Uso de React Icons</li>
     </ul>
   );
 

@@ -15,11 +15,14 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact'
 import SafeData from './components/pages/SafeData'
 import SendMessage from './components/pages/SendMessage';
+import PagesInfo from './components/pages/PagesInfo';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <CartProvider>
       <AdminProvider>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -33,6 +36,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/safedata" element={<SafeData />} />
             <Route path="/sendmessage" element={<SendMessage />} />
+            <Route path="/info/:sectionId" element={<PagesInfo />} />
             <Route
               path="/admin"
               element={

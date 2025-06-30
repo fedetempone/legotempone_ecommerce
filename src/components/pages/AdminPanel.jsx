@@ -105,6 +105,7 @@ const AdminPanel = () => {
                     setEditedData({ ...editedData, id: e.target.value })
                   }
                   className="admin-input"
+                  placeholder="ID"
                 />
               ) : (
                 product.id
@@ -115,11 +116,21 @@ const AdminPanel = () => {
               <>
                 <input
                   type="text"
+                  value={editedData.img}
+                  onChange={(e) =>
+                    setEditedData({ ...editedData, img: e.target.value })
+                  }
+                  className="admin-input"
+                  placeholder="URL de imagen"
+                />
+                <input
+                  type="text"
                   value={editedData.description}
                   onChange={(e) =>
                     setEditedData({ ...editedData, description: e.target.value })
                   }
                   className="admin-input"
+                  placeholder="Título"
                 />
                 <input
                   type="number"
@@ -130,6 +141,25 @@ const AdminPanel = () => {
                     setEditedData({ ...editedData, price: Number(e.target.value) })
                   }
                   className="admin-input"
+                  placeholder="Precio"
+                />
+                <input
+                  type="number"
+                  min={0}
+                  value={editedData.stock}
+                  onChange={(e) =>
+                    setEditedData({ ...editedData, stock: Number(e.target.value) })
+                  }
+                  className="admin-input"
+                  placeholder="Stock"
+                />
+                <textarea
+                  value={editedData.detail}
+                  onChange={(e) =>
+                    setEditedData({ ...editedData, detail: e.target.value })
+                  }
+                  className="admin-textarea"
+                  placeholder="Descripción detallada"
                 />
                 <div className="admin-btn-group">
                   <button
@@ -150,6 +180,12 @@ const AdminPanel = () => {
                 </p>
                 <p>
                   <strong>Precio:</strong> ${product.price}
+                </p>
+                <p>
+                  <strong>Stock:</strong> {product.stock}
+                </p>
+                <p>
+                  <strong>Detalle:</strong> {product.detail}
                 </p>
                 <div className="admin-btn-group">
                   <button

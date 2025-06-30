@@ -81,7 +81,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Estilos responsive */
+/* mobile */
 @media (max-width: 768px) {
   .send-container {
     flex-direction: column;

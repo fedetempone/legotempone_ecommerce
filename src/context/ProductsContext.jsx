@@ -21,7 +21,7 @@ export const ProductsProvider = ({ children }) => {
           }
         } catch {
           console.warn(
-            "No se puede leer localStorage correctamente, limpiando datos"
+            "se limpian los datos al no poder leer el localstorage"
           );
           localStorage.removeItem("products");
         }

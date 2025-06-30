@@ -11,13 +11,16 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+  
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
 
   const addToCart = (product, quantity = 1) => {
     setCartItems(prev => {
-      const itemExists = prev.find(item => item._id === product._id);
+      const itemExists = prev.find(item => item.id === product.id);
       if (itemExists) {
         return prev.map(item =>
-          item._id === product._id
+          item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
@@ -27,13 +30,13 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (productId) => {
-    setCartItems(prev => prev.filter(item => item._id !== productId));
+    setCartItems(prev => prev.filter(item => item.id !== productId));
   };
 
   const updateQuantity = (productId, quantity) => {
     setCartItems(prev =>
       prev.map(item =>
-        item._id === productId ? { ...item, quantity } : item
+        item.id === productId ? { ...item, quantity } : item
       )
     );
   };
@@ -44,7 +47,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, totalQuantity}}
     >
       {children}
     </CartContext.Provider>

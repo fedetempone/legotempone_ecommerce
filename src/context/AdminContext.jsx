@@ -36,7 +36,12 @@ export const AdminProvider = ({ children }) => {
   // funcion para crear producto
   const createProduct = async (product) => {
     try {
-      const res = await axios.post(API_URL, product);
+      const token = sessionStorage.getItem("token"); // obtengo token
+      const res = await axios.post(API_URL, product, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setProducts((prev) => [...prev, res.data]);
     } catch (err) {
       alert("Error al crear el producto. ¿ID duplicado?");
@@ -46,7 +51,12 @@ export const AdminProvider = ({ children }) => {
   // funcion para elininar el producto
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      const token = sessionStorage.getItem("token"); // 🔐 obtener token
+      await axios.delete(`${API_URL}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setProducts((prev) => prev.filter((p) => p.id !== id));
     } catch (err) {
       console.error("Error al eliminar producto", err);
@@ -56,7 +66,12 @@ export const AdminProvider = ({ children }) => {
   // funcion para actualizar el producto
   const updateProduct = async (id, updatedData) => {
     try {
-      const res = await axios.put(`${API_URL}/${id}`, updatedData);
+      const token = sessionStorage.getItem("token"); // 🔐 obtener token
+      const res = await axios.put(`${API_URL}/${id}`, updatedData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setProducts((prev) =>
         prev.map((p) => (p.id === id ? res.data : p))
       );
@@ -65,7 +80,7 @@ export const AdminProvider = ({ children }) => {
     }
   };
 
- // cuando cambio un producto updateo el localstorage
+  // cuando cambio un producto updateo el localstorage
   useEffect(() => {
     if (products.length > 0) {
       localStorage.setItem("products", JSON.stringify(products));

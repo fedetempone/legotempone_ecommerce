@@ -65,6 +65,17 @@
   text-decoration: underline;
 }
 
+.footer-column li a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-column li a:hover {
+  text-decoration: underline;
+}
+
+
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -133,6 +144,7 @@
   font-size: 20px;
   cursor: pointer;
   transition: transform 0.2s;
+  color: #6885e1;
 }
 
 .social-media .icons svg:hover {
@@ -144,4 +156,12 @@
     padding: 20px;
 
     text-align: center;
+} 
+
+.footer-legal li a {
+  color: #6885e1;
+}
+
+.footer-legal li a:hover {
+  color: white;
 }

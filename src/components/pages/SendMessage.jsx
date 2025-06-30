@@ -14,7 +14,6 @@ const SendMessage = () => {
             alert("Por favor, escriba un mensaje más completo (mínimo 10 caracteres).");
             return;
         }
-        console.log("Mensaje enviado:", { email, mensaje });
         setShowPopup(true);
         setEmail("");
         setMensaje("");

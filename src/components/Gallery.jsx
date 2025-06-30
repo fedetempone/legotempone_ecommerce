@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../src/styles/gallery.css";
 import localProducts from "../../backend/data/products";
+import { CartContext } from "../context/CartContext";
 
 const Gallery = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,8 @@ const Gallery = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const { addToCart } = useContext(CartContext); 
+
   useEffect(() => {
     const loadProductsFromLocalStorage = () => {
       const stored = localStorage.getItem("products");
@@ -19,7 +22,6 @@ const Gallery = () => {
         try {
           const parsed = JSON.parse(stored);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            console.log("Productos cargados desde localStorage");
             setProducts(parsed);
             const initialQuantities = {};
             parsed.forEach((p) => (initialQuantities[p.id] = 1));
@@ -27,9 +29,7 @@ const Gallery = () => {
             return true;
           }
         } catch {
-          console.warn(
-            "No se pudo leer correctamente localStorage, limpiando datos"
-          );
+          console.warn("al no poder leer el localstorage lo limpiamos !");
           localStorage.removeItem("products");
         }
       }
@@ -41,21 +41,18 @@ const Gallery = () => {
         .get(`${API_URL}/api/products`)
         .then((res) => {
           const { products } = res.data;
-          console.log(`Productos obtenidos desde ${API_URL}`);
           setProducts(products);
           localStorage.setItem("products", JSON.stringify(products));
           const initialQuantities = {};
           products.forEach((p) => (initialQuantities[p.id] = 1));
           setQuantities(initialQuantities);
         })
-        .catch((err) => {
-          console.error("Error backend, cargando productos locales:", err);
+        .catch(() => {
           setProducts(localProducts);
           localStorage.setItem("products", JSON.stringify(localProducts));
           const initialQuantities = {};
           localProducts.forEach((p) => (initialQuantities[p.id] = 1));
           setQuantities(initialQuantities);
-          console.log("Productos cargados desde fallback local");
         });
     }
   }, [API_URL]);
@@ -74,19 +71,8 @@ const Gallery = () => {
     }));
   };
 
-  const addToCart = (product, quantity) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    // Ojo que el backend puede usar _id, pero en tu products usás id,
-    // ajustá según cómo sea el identificador en tu objeto product.
-    const existingProduct = cart.find((item) => item.id === product.id);
-
-    if (existingProduct) {
-      existingProduct.quantity += quantity;
-    } else {
-      cart.push({ ...product, quantity });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
+  const handleAddToCart = (product, quantity) => {
+    addToCart(product, quantity);
     setSelectedProduct({ ...product, quantity });
     setIsAdded(true);
   };
@@ -116,27 +102,22 @@ const Gallery = () => {
                   <p className="product-price">${totalPrice}</p>
 
                   <div className="quantity-controls">
-                    <button
-                      className="addButton"
-                      onClick={() => decrement(product.id)}
-                    >
+                    <button className="addButton" onClick={() => decrement(product.id)}>
                       -
                     </button>
-                    <input type="number" value={quantity} min="1" readOnly />
-                    <button
-                      className="substractButton"
-                      onClick={() => increment(product.id)}
-                    >
+                    <input type="number" value={quantity} readOnly />
+                    <button className="substractButton" onClick={() => increment(product.id)}>
                       +
                     </button>
                   </div>
+
                   <div className="gallerystock">
                     <h3 className="stockquantity">Stock actual: {product.stock}</h3>
                   </div>
 
                   <button
                     className="css-button-sliding-to-bottom--sky"
-                    onClick={() => addToCart(product, quantity)}
+                    onClick={() => handleAddToCart(product, quantity)}
                     disabled={product.stock === 0}
                     title={product.stock === 0 ? "Producto sin stock" : ""}
                   >

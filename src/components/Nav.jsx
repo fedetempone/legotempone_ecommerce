@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaTimes, FaBars, FaShoppingCart } from "react-icons/fa";
+import { CartContext } from "../context/CartContext";
 import "../styles/navbar.css";
 
 const Navbar = ({ isFixed = true, darkMode = false }) => {
@@ -8,11 +9,13 @@ const Navbar = ({ isFixed = true, darkMode = false }) => {
   const [isNavbarHidden, setIsNavbarHidden] = useState(false);
   const [showSearchInputMobile, setShowSearchInputMobile] = useState(false);
   const [showSearchInputDesktop, setShowSearchInputDesktop] = useState(false);
+  const { totalQuantity } = useContext(CartContext);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const handleNavLinkClick = () => {
     setIsMenuOpen(false);
   };
+
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -75,8 +78,11 @@ const Navbar = ({ isFixed = true, darkMode = false }) => {
             className="search-icon clickable"
             onClick={toggleSearchInputMobile}
           />
-          <Link to="/cart">
+          <Link to="/cart" className="cart-icon-wrapper">
             <FaShoppingCart className="cart-icon" />
+            {totalQuantity > 0 && (
+              <span className="cart-count">{totalQuantity}</span>
+            )}
           </Link>
         </div>
 
@@ -123,8 +129,11 @@ const Navbar = ({ isFixed = true, darkMode = false }) => {
               className="search-input-desktop"
             />
           </form>
-          <Link to="/cart">
+          <Link to="/cart" className="cart-icon-wrapper">
             <FaShoppingCart className="cart-icon" />
+            {totalQuantity > 0 && (
+              <span className="cart-count">{totalQuantity}</span>
+            )}
           </Link>
         </div>
       </div>
