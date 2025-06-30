@@ -1,4 +1,4 @@
-# LegoTempoNE - E-commerce Store
+# LegoTempone - E-commerce Store
 
 ## About the Project
 
