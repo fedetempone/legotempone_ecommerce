@@ -12,6 +12,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       {/* el productsprovider sirve globalmente todos los productos y sus detalles a toda la aplicacion */}
       <ProductsProvider>
+        {/* el cart provider sirve globalmente todos los productos para el carrito, vamos a poder ver actualizar pushear todos los productos
+        al carrito desde cualquier lugar de la app en donde utilicemos el cartcontext */}
         <CartProvider>
           {/* y el app es el componente principal, el componente raiz, el que maneja toda la estructura visual y logicade navegacion de la aplicacion */}
           <App />

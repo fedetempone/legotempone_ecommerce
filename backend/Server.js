@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/auth.js";
+import path from "path";
 
 dotenv.config();
 
@@ -44,6 +45,15 @@ mongoose
 // creacion de rutas
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
+
+// las siguientes 3 lineas de codigo (app.use expres / app.get * req res / res.sendfile) son para que al actualizar el deploy de render
+// o para ingresar directamente a una ruta /products o /contact ol o que sea, no me tire 404
+// sirvo los archivos estaticos desde dist (esto es para ver si funciona en produccion)
+app.use(express.static(path.resolve("./dist")));
+// para cualquier ruta que no sea API, devuelvo index.html para que React Router maneje el enrutamiento (esto tmbn es para produccion)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("./dist/index.html"));
+});
 
 // prendo el servidor
 app.listen(port, () => {
