@@ -51,7 +51,7 @@ app.use("/api/auth", authRoutes);
 // sirvo los archivos estaticos desde dist (esto es para ver si funciona en produccion)
 app.use(express.static(path.resolve("./dist")));
 // para cualquier ruta que no sea API, devuelvo index.html para que React Router maneje el enrutamiento (esto tmbn es para produccion)
-app.get("*", (req, res) => {
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.resolve("./dist/index.html"));
 });
 
