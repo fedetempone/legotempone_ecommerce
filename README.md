@@ -14,7 +14,7 @@ This project is built using the following technologies and tools:
 - ![html-logo](https://img.icons8.com/color/25/000000/html-5--v1.png) HTML5  
 - ![css-logo](https://img.icons8.com/color/25/000000/css3.png) CSS3  
 - ![js-logo](https://img.icons8.com/color/25/000000/javascript--v1.png) JavaScript (ES6+)  
-- ![react-logo](https://img.icons8.com/?size=100&id=SB6eApJMkq1S&format=png&color=000000) React
+- ![react-logo](https://img.icons8.com/ios/25/000000/react-native.png) React
 - ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
 - ![vite-logo](https://img.icons8.com/fluency/25/vite.png) Vite (Build tool & dev server)
 - SweetAlert2 for elegant alerts and notifications  
