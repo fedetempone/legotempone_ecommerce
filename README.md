@@ -1,81 +1,64 @@
-LegoTempoNE - E-commerce Store
-About the Project
-LegoTempoNE is a responsive e-commerce website developed as a final project for TalentoTech Academy.
-It features product browsing, detailed product views, shopping cart management, user authentication, and more — all built with React and form validations for a smooth user experience.
+# LegoTempoNE - E-commerce Store
+
+## About the Project
+
+**LegoTempoNE** is a responsive e-commerce website developed as a final project for **TalentoTech Academy**.  
+It features product browsing, detailed product views, shopping cart management, user authentication, and more — all built with **React**, including validations and smooth UX interactions.
 
 ---
 
-Technologies & Tools Used
+## Technologies & Tools Used
+
 This project is built using the following technologies and tools:
 
-![html-logo] HTML5
-
-![css-logo] CSS3
-
-![js-logo] JavaScript (ES6+)
-
-![react-logo] React.js
-
-![git-logo] Git for version control
-
-SweetAlert2 for elegant alerts and notifications
-
-React Router for SPA navigation
-
-Context API for global state management
+- ![html-logo](https://img.icons8.com/color/25/000000/html-5--v1.png) HTML5  
+- ![css-logo](https://img.icons8.com/color/25/000000/css3.png) CSS3  
+- ![js-logo](https://img.icons8.com/color/25/000000/javascript--v1.png) JavaScript (ES6+)  
+- ![react-logo](https://img.icons8.com/color/25/000000/react.png) React  
+- ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
+- Vite as a build tool and development server  
+- SweetAlert2 for elegant alerts and notifications  
+- React Router for SPA navigation  
+- Context API for global state management  
 
 ---
 
-Technologies & Tools Used
-This project is built using the following technologies and tools:
+## Getting Started
 
-![html-logo] HTML5
+### Installation
 
-![css-logo] CSS3
+1. Clone the repo:
 
-![js-logo] JavaScript (ES6+)
+   ```bash
+   git clone https://github.com/fedetempone/legotempone_ecommerce.git
+   cd legotempone_ecommerce
+   ```
 
-![react-logo] React.js
+2. Install dependencies:
 
-![git-logo] Git for version control
+   ```bash
+   npm install
+   ```
 
-SweetAlert2 for elegant alerts and notifications
+3. Run the development server:
 
-React Router for SPA navigation
+   ```bash
+   npm start
+   ```
 
-Context API for global state management
+4. Open your browser at:
 
----
-
-Getting Started
-Installation
-Clone the repo:
-
-bash
-Copiar
-Editar
-git clone https://github.com/your_username/legotempone.git
-cd legotempone
-Install dependencies:
-
-bash
-Copiar
-Editar
-npm install
-Run the development server:
-
-bash
-Copiar
-Editar
-npm start
-Open http://localhost:3000 in your browser.
+   ```bash
+   http://localhost:3000
+   ```
 
 ---
 
-Contact and Support
-**Ante cualquier inquietud sientase en la libertad de consultar**<br>
-**_¡Si se puede Imaginar se puede Programar!_**
+## Contact and Support
 
-**_Saludos Cordiales!_** 
+**Ante cualquier inquietud siéntase en la libertad de consultar.**  
+**_¡Si se puede imaginar, se puede programar!_**
+
+**_Saludos cordiales!_**  
 ![saludos](https://img.icons8.com/ios/20/star-trek-gesture.png)
 
