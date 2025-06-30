@@ -17,10 +17,10 @@ This project is built using the following technologies and tools:
 - ![react-logo](https://img.icons8.com/ios/25/000000/react-native.png) React
 - ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
 - ![vite-logo](https://img.icons8.com/fluency/25/vite.png) Vite (Build tool & dev server)
-- SweetAlert2 for elegant alerts and notifications  
-- React Router for SPA navigation  
-- Context API for global state management  
-
+- ![sweetalert2](https://img.icons8.com/color/25/000000/alert.png) SweetAlert2 for elegant alerts and notifications
+- ![react-router](https://img.icons8.com/color/25/000000/navigation.png) React Router for SPA navigation
+- ![react-router](https://img.icons8.com/color/25/000000/navigation.png) React Router for SPA navigation
+  
 ---
 
 ## Getting Started
