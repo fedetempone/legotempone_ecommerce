@@ -14,9 +14,9 @@ This project is built using the following technologies and tools:
 - ![html-logo](https://img.icons8.com/color/25/000000/html-5--v1.png) HTML5  
 - ![css-logo](https://img.icons8.com/color/25/000000/css3.png) CSS3  
 - ![js-logo](https://img.icons8.com/color/25/000000/javascript--v1.png) JavaScript (ES6+)  
-- ![react-logo](https://img.icons8.com/color/25/000000/react.png) React  
+- ![react-logo](https://img.icons8.com/?size=100&id=122637&format=png&color=000000) React
 - ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
-- Vite as a build tool and development server  
+- ![vite-logo](https://img.icons8.com/fluency/25/vite.png) Vite (Build tool & dev server)
 - SweetAlert2 for elegant alerts and notifications  
 - React Router for SPA navigation  
 - Context API for global state management  
@@ -49,8 +49,20 @@ This project is built using the following technologies and tools:
 4. Open your browser at:
 
    ```bash
-   http://localhost:3000
+   http://localhost:5000
    ```
+---
+
+## Deployment
+
+You can access the deployed version of this project here:  
+👉 [https://ecommerce-legotempone.onrender.com/](https://ecommerce-legotempone.onrender.com/)
+
+---
+
+## Demo
+
+![Lego Harry Potter Demo](https://media.giphy.com/media/mEDQK7yq11ekm28bG1/giphy.gif)
 
 ---
 
