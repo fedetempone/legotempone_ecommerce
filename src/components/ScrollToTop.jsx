@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     // fuerzo un scrolleo al principio de la página cada vez que cambia la ruta
     window.scrollTo({ top: 0, behavior: "smooth" });
