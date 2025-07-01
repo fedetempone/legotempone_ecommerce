@@ -5,6 +5,7 @@ import "../../styles/productDetail.css";
 import { Link, useNavigate } from "react-router-dom";
 import localProducts from "../../../backend/data/products";
 import { CartContext } from "../../context/CartContext"; // importo el contexto
+import { Helmet } from "react-helmet-async"; // para mejorar seo y accesibilidad... cada pagina tiene su titulo
 
 const Productos = () => {
   const [products, setProducts] = useState([]);
@@ -115,6 +116,10 @@ const Productos = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Productos | LEGO Tempone</title>
+      <meta name="description" content="Explorá todos nuestros sets de LEGO disponibles. Desde clásicos hasta los más nuevos, ¡descubrilos acá!" />
+    </Helmet>
       <h3 className="products-title">TODOS NUESTROS PRODUCTOS ♥</h3>
       <div className="products-container">
         {products.map((product) => {

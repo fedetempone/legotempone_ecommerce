@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import Gallery from '../../components/Gallery';
 import Popup from '../../components/Popup';
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -37,6 +38,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>LEGO Tempone - Tu tienda LEGO favorita</title>
+        <meta name="description" content="Explorá todos nuestros sets de LEGO disponibles. Desde clásicos hasta los más nuevos, ¡descubrilos acá!" />
+      </Helmet>
       {showPopup &&
         <Popup
           message={requisitosCumplidos}

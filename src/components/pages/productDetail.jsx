@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { CartContext } from "../../context/CartContext";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
-  const { addToCart } = useContext(CartContext); 
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -40,30 +41,40 @@ const ProductDetail = () => {
   if (!product) return <p>Producto no encontrado</p>;
 
   return (
-    <div className="product-detail-container">
-      <img src={product.img} alt={product.description} />
-      <h2>{product.description}</h2>
-      <p>Precio: ${product.price}</p>
-      <p>{product.category}</p>
-      <p>{product.detail}</p>
-      <p style={{ fontWeight: "bold" }}>
-        STOCK ACTUAL EN SUCURSAL: {product.stock} unidades
-      </p>
-      <div className="quantity-controls">
-        <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-        <input id="quantityInput" type="number" value={quantity} min="1" readOnly />
-        <button onClick={() => setQuantity(quantity + 1)}>+</button>
+    <>
+      <Helmet>
+        <title>{product.description} | LEGO Tempone</title>
+        <meta
+          name="description"
+          content={`Detalles y precios de ${product.description}. Comprá online ahora.`}
+        />
+      </Helmet>
+
+      <div className="product-detail-container">
+        <img src={product.img} alt={product.description} />
+        <h2>{product.description}</h2>
+        <p>Precio: ${product.price}</p>
+        <p>{product.category}</p>
+        <p>{product.detail}</p>
+        <p style={{ fontWeight: "bold" }}>
+          STOCK ACTUAL EN SUCURSAL: {product.stock} unidades
+        </p>
+        <div className="quantity-controls">
+          <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+          <input id="quantityInput" type="number" value={quantity} min="1" readOnly />
+          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+        </div>
+        <button
+          className="add-to-cart-button"
+          onClick={() => {
+            addToCart(product, quantity);
+            navigate("/cart");
+          }}
+        >
+          Añadir al carrito
+        </button>
       </div>
-      <button
-        className="add-to-cart-button"
-        onClick={() => {
-          addToCart(product, quantity); 
-          navigate("/cart");
-        }}
-      >
-        Añadir al carrito
-      </button>
-    </div>
+    </>
   );
 };
 

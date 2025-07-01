@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import '../../styles/infoPages.css'
+
 
 const sections = [
   { id: "grupo", title: "The TempoLego Group", content: "Somos una comunidad educativa enfocada en el desarrollo de soluciones modulares para potenciar el aprendizaje práctico y creativo." },
@@ -53,16 +55,22 @@ const PagesInfo = () => {
   const section = sections[currentPage];
 
   return (
-    <div className="info-page">
-      <h2>{section.title}</h2>
-      <p style={{ whiteSpace: "pre-line" }}>{section.content}</p>
+    <>
+      <Helmet>
+        <title>Información | LEGO Tempone</title>
+        <meta name="description" content="Consultá nuestras políticas, términos y toda la información legal." />
+      </Helmet>
+      <div className="info-page">
+        <h2>{section.title}</h2>
+        <p style={{ whiteSpace: "pre-line" }}>{section.content}</p>
 
-      <div className="paginator" style={{ marginTop: "2rem", display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
-        <button onClick={handlePrev} disabled={currentPage === 0}>{"<"}</button>
-        <span>Page {currentPage + 1} of {sections.length}</span>
-        <button onClick={handleNext} disabled={currentPage === sections.length - 1}>{">"}</button>
+        <div className="paginator" style={{ marginTop: "2rem", display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
+          <button onClick={handlePrev} disabled={currentPage === 0}>{"<"}</button>
+          <span>Page {currentPage + 1} of {sections.length}</span>
+          <button onClick={handleNext} disabled={currentPage === sections.length - 1}>{">"}</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

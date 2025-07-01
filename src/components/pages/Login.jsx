@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { Helmet } from "react-helmet-async";
 import '../../styles/login.css'
 
 const Login = () => {
@@ -25,32 +26,39 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          autoComplete="username"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          autoComplete="current-password"
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Ingresando..." : "Ingresar"}
-        </button>
-      </form>
-      {error && <p style={{ color: "red", marginTop: "1rem" }}>{error}</p>}
-    </div>
+    <>
+      <Helmet>
+        <title>Iniciar sesión | LEGO Tempone</title>
+        <meta name="description" content="Accedé a tu cuenta para comprar los mejores sets LEGO." />
+      </Helmet>
+      <div className="login-container">
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            autoComplete="username"
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            autoComplete="current-password"
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? "Ingresando..." : "Ingresar"}
+          </button>
+        </form>
+        {error && <p style={{ color: "red", marginTop: "1rem" }}>{error}</p>}
+      </div>
+    </>
   );
+
 };
 
 export default Login;

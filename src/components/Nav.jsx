@@ -102,10 +102,10 @@ const Navbar = ({ isFixed = true, darkMode = false }) => {
 
         {/* links de navegacion */}
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <li><Link to="/" onClick={handleNavLinkClick}>Inicio</Link></li>
-          <li><Link to="/products" onClick={handleNavLinkClick}>Productos</Link></li>
+          <li><Link to="/" onClick={handleNavLinkClick}>Home</Link></li>
+          <li><Link to="/products" onClick={handleNavLinkClick}>Products</Link></li>
           <li><Link to="/about" onClick={handleNavLinkClick}>About</Link></li>
-          <li><Link to="/contact" onClick={handleNavLinkClick}>Contacto</Link></li>
+          <li><Link to="/contact" onClick={handleNavLinkClick}>Contact</Link></li>
           <li><Link to="/login" onClick={handleNavLinkClick}>Login</Link></li>
           <li><Link to="/register" onClick={handleNavLinkClick}>Register</Link></li>
 

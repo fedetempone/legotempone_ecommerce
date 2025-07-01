@@ -17,38 +17,41 @@ import SafeData from './components/pages/SafeData'
 import SendMessage from './components/pages/SendMessage';
 import PagesInfo from './components/pages/PagesInfo';
 import ScrollToTop from './components/ScrollToTop';
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <CartProvider>
-      <AdminProvider>
-        <ScrollToTop />
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/search" element={<SearchResults />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/safedata" element={<SafeData />} />
-            <Route path="/sendmessage" element={<SendMessage />} />
-            <Route path="/info/:sectionId" element={<PagesInfo />} />
-            <Route
-              path="/admin"
-              element={
-                <RutasProtegidas>
-                  <Admin />
-                </RutasProtegidas>
-              }
-            />
-          </Route>
-        </Routes>
-      </AdminProvider>
-    </CartProvider>
+    <HelmetProvider>
+      <CartProvider>
+        <AdminProvider>
+          <ScrollToTop />
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/search" element={<SearchResults />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/safedata" element={<SafeData />} />
+              <Route path="/sendmessage" element={<SendMessage />} />
+              <Route path="/info/:sectionId" element={<PagesInfo />} />
+              <Route
+                path="/admin"
+                element={
+                  <RutasProtegidas>
+                    <Admin />
+                  </RutasProtegidas>
+                }
+              />
+            </Route>
+          </Routes>
+        </AdminProvider>
+      </CartProvider>
+    </HelmetProvider>
   );
 }
 

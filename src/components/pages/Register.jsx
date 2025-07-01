@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { Helmet } from "react-helmet-async";
 import "../../styles/register.css";
 
 const Register = () => {
@@ -41,32 +42,39 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Crear cuenta</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre de usuario"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          autoComplete="username"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          autoComplete="new-password"
-        />
-        <button type="submit">Registrarse</button>
-      </form>
-      {mensaje && <p style={{ marginTop: "1rem", color: mensaje.includes("correctamente") ? "green" : "red" }}>
-        {mensaje}
-      </p>}
-    </div>
+    <>
+      <Helmet>
+        <title>Crear cuenta | LEGO Tempone</title>
+        <meta name="description" content="Registrate y formá parte de LEGO Tempone para disfrutar de ofertas exclusivas." />
+      </Helmet>
+      <div className="form-container">
+        <h2>Crear cuenta</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            autoComplete="username"
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            autoComplete="new-password"
+          />
+          <button type="submit">Registrarse</button>
+        </form>
+        {mensaje && <p style={{ marginTop: "1rem", color: mensaje.includes("correctamente") ? "green" : "red" }}>
+          {mensaje}
+        </p>}
+      </div>
+    </>
   );
+
 };
 
 export default Register;
