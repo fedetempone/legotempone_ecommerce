@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build && copyfiles static.json dist",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "postinstall": "npm install --legacy-peer-deps"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.9.0",
