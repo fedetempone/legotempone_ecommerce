@@ -106,7 +106,7 @@ const Productos = () => {
   if (loading || fakeLoading) {
     return (
       <div className="spinner-container">
-        <div className="spinner"></div>
+        <div className="spinner" aria-hidden="true"></div>
         <p className="loading-text">Cargando productos, por favor espere...</p>
       </div>
     );
@@ -116,10 +116,10 @@ const Productos = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Productos | LEGO Tempone</title>
-      <meta name="description" content="Explorá todos nuestros sets de LEGO disponibles. Desde clásicos hasta los más nuevos, ¡descubrilos acá!" />
-    </Helmet>
+      <Helmet>
+        <title>Productos | LEGO Tempone</title>
+        <meta name="description" content="Explorá todos nuestros sets de LEGO disponibles. Desde clásicos hasta los más nuevos, ¡descubrilos acá!" />
+      </Helmet>
       <h3 className="products-title">TODOS NUESTROS PRODUCTOS ♥</h3>
       <div className="products-container">
         {products.map((product) => {
@@ -130,7 +130,7 @@ const Productos = () => {
             <div key={product.id} className="product-card">
               <img
                 src={product.img}
-                alt={product.description}
+                alt={`Imagen del producto: ${product.description}`}
                 className="product-image"
               />
               <div className="product-details">
@@ -138,19 +138,23 @@ const Productos = () => {
                 <p className="product-price">${total}</p>
 
                 <div className="quantity-controls">
-                  <button className="addButton" onClick={() => decrement(product.id)}>-</button>
-                  <input type="number" value={quantity} min="1" readOnly />
-                  <button className="substractButton" onClick={() => increment(product.id)}>+</button>
+                  <button className="addButton" onClick={() => decrement(product.id)} aria-label={`Disminuir cantidad de ${product.description}`}>-</button>
+                  <input type="number" value={quantity} min="1" readOnly aria-label={`Cantidad seleccionada: ${quantity}`} />
+                  <button className="substractButton" onClick={() => increment(product.id)} aria-label={`Aumentar cantidad de ${product.description}`}>+</button>
                 </div>
 
                 <button
                   className="css-button-sliding-to-bottom--sky"
                   onClick={() => handleAddToCart(product, quantity)}
+                  aria-label={`Añadir ${quantity} unidades de ${product.description} al carrito`}
                 >
                   Añadir al carrito
                 </button>
                 <Link to={`/product/${product.id}`}>
-                  <button className="css-button-sliding-to-bottom--sky">Ver detalle</button>
+                  <button className="css-button-sliding-to-bottom--sky"
+                    aria-label={`Ver detalle del producto ${product.description}`}>
+                    Ver detalle
+                  </button>
                 </Link>
               </div>
             </div>

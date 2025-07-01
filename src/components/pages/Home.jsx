@@ -33,6 +33,9 @@ const Home = () => {
       <li>Register para registrarse como admin</li>
       <li>Decidí no validar peticiones para crear un admin nuevo</li>
       <li>Uso de React Icons</li>
+      <li>Uso de SweetAlert2 y SweetAlert2 Canvas-Confetti</li>
+      <li>Mejoras de Accesibilidad en componentes principales</li>
+      <li>Uso de React Helmet</li>
     </ul>
   );
 

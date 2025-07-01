@@ -49,7 +49,7 @@ const Register = () => {
       </Helmet>
       <div className="form-container">
         <h2>Crear cuenta</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} role="form" aria-labelledby="register-title">
           <input
             type="text"
             placeholder="Nombre de usuario"
@@ -68,7 +68,7 @@ const Register = () => {
           />
           <button type="submit">Registrarse</button>
         </form>
-        {mensaje && <p style={{ marginTop: "1rem", color: mensaje.includes("correctamente") ? "green" : "red" }}>
+        {mensaje && <p aria-live="polite" style={{ marginTop: "1rem", color: mensaje.includes("correctamente") ? "green" : "red" }}>
           {mensaje}
         </p>}
       </div>

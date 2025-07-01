@@ -46,12 +46,15 @@ const ProductDetail = () => {
         <title>{product.description} | LEGO Tempone</title>
         <meta
           name="description"
-          content={`Detalles y precios de ${product.description}. Comprá online ahora.`}
+          content={`Detalles y precios de ${product.description}. Comprá online ahora.` }
         />
       </Helmet>
 
       <div className="product-detail-container">
-        <img src={product.img} alt={product.description} />
+        <img
+          src={product.img}
+          alt={`Imagen del producto: ${product.description}`}
+        />
         <h2>{product.description}</h2>
         <p>Precio: ${product.price}</p>
         <p>{product.category}</p>
@@ -60,9 +63,9 @@ const ProductDetail = () => {
           STOCK ACTUAL EN SUCURSAL: {product.stock} unidades
         </p>
         <div className="quantity-controls">
-          <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-          <input id="quantityInput" type="number" value={quantity} min="1" readOnly />
-          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+          <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Disminuir cantidad">-</button>
+          <input id="quantityInput" type="number" value={quantity} min="1" readOnly aria-label={`Cantidad seleccionada: ${quantity}`}/>
+          <button onClick={() => setQuantity(quantity + 1)} aria-label="Aumentar cantidad">+</button>
         </div>
         <button
           className="add-to-cart-button"
@@ -70,6 +73,7 @@ const ProductDetail = () => {
             addToCart(product, quantity);
             navigate("/cart");
           }}
+          aria-label={`Añadir ${quantity} unidades de ${product.description} al carrito`}
         >
           Añadir al carrito
         </button>

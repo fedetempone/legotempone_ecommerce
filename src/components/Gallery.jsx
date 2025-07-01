@@ -113,11 +113,12 @@ const Gallery = () => {
                 <p className="product-price">${totalPrice}</p>
 
                 <div className="quantity-controls">
-                  <button className="addButton" onClick={() => decrement(product.id)}>
+                  <button className="addButton" onClick={() => decrement(product.id) } aria-label="Disminuir cantidad">
+                    
                     -
                   </button>
-                  <input type="number" value={quantity} readOnly />
-                  <button className="substractButton" onClick={() => increment(product.id)}>
+                  <input type="number" value={quantity} readOnly  aria-label={`Cantidad seleccionada para ${product.description}`}/>
+                  <button className="substractButton" onClick={() => increment(product.id)} aria-label="Aumentar cantidad">
                     +
                   </button>
                 </div>
@@ -140,7 +141,7 @@ const Gallery = () => {
         })}
 
         {isAdded && selectedProduct && (
-          <div className="added-notification">
+          <div className="added-notification" role="dialog" aria-modal="true">
             <img
               src={selectedProduct.img}
               alt={selectedProduct.description}
