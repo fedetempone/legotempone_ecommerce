@@ -2,7 +2,7 @@
 
 ## About the Project
 
-**LegoTempoNE** is a responsive e-commerce website developed as a final project for **TalentoTech Academy**.  
+**LegoTempoNE** is a responsive e-commerce website developed as a final project for **TalentoTech**.  
 It features product browsing, detailed product views, shopping cart management, user authentication, and more — all built with **React**, including validations and smooth UX interactions.
 
 ---
