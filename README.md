@@ -28,7 +28,7 @@ This project is built using the following technologies and tools:
 ### Installation
 
 1. Clone the repo:
- ```bash
+   ```bash
    git clone https://github.com/fedetempone/legotempone_ecommerce.git
    cd legotempone_ecommerce
    cd finalproject
