@@ -35,7 +35,7 @@ This project is built using:
 ```bash
 git clone [https://github.com/yourusername/talentotech-cli.git](https://github.com/yourusername/talentotech-cli.git)
 cd talentotech-cli
-"```"
+```
 
 **2. Install dependencies:**
 
