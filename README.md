@@ -39,15 +39,16 @@ This project is built using the following technologies and tools:
    npm install
    ```
 
-   3. Run the development server:
+3. Run the development server:
    
    npm start
    ```
 
-   4. Open your browser at:
-      ```bash
+4. Open your browser at:
+   ```bash
    http://localhost:5000
    ```
+   
 ---
 
 ## Deployment
