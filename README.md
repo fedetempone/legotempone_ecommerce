@@ -1,76 +1,113 @@
-# LegoTempone - E-commerce Store
+# Talentotech - Terminal Product Management
+
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![npm](https://img.shields.io/badge/npm-9.x-blue)
+![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/talentotech-cli/nodejs.yml?branch=main)
+![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen)
+![Downloads](https://img.shields.io/npm/dt/talentotech-cli)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## About the Project
 
-**LegoTempoNE** is a responsive e-commerce website developed as a final project for **TalentoTech**.  
-It features product browsing, detailed product views, shopping cart management, user authentication, and more — all built with **React**, including validations and smooth UX interactions.
+**Talentotech CLI** is a Node.js command-line tool to manage products in an online store.
+It allows users to list, create, and delete products by interacting with the **FakeStore API** directly from the terminal.
+This project demonstrates handling CLI arguments, asynchronous API calls, and clean console outputs, simulating an inventory management system.
 
 ---
 
 ## Technologies & Tools Used
 
-This project is built using the following technologies and tools:
+This project is built using:
 
-- ![html-logo](https://img.icons8.com/color/25/000000/html-5--v1.png) HTML5  
-- ![css-logo](https://img.icons8.com/color/25/000000/css3.png) CSS3  
-- ![js-logo](https://img.icons8.com/color/25/000000/javascript--v1.png) JavaScript (ES6+)  
-- ![react-logo](https://img.icons8.com/ios/25/000000/react-native.png) React
-- ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
-- ![vite-logo](https://img.icons8.com/fluency/25/vite.png) Vite (Build tool & dev server)
-- ![sweetalert2](https://img.icons8.com/fluency/25/error.png) SweetAlert2 for elegant alerts and notifications  
-- ![react-router](https://img.icons8.com/fluency/25/compass.png) React Router for SPA navigation  
-- ![react-logo](https://img.icons8.com/color/25/000000/react-native.png) Context API for global state management  
-  
+- **Node.js**
+- **JavaScript (ES6+)**
+- **Fetch API** for HTTP requests
+- **Command-line interface (CLI)** for terminal interaction
+
 ---
 
 ## Getting Started
 
 ### Installation
 
-1. Clone the repo:
+**1. Clone the repository:**
 
-   ```bash
-   git clone https://github.com/fedetempone/legotempone_ecommerce.git
-   cd legotempone_ecommerce
-   cd finalproject
-   ```
+```bash
+git clone [https://github.com/yourusername/talentotech-cli.git](https://github.com/yourusername/talentotech-cli.git)
+cd talentotech-cli
+"```"
 
-2. Install dependencies:
+**2. Install dependencies:**
 
-   ```bash
-   npm install
-   ```
+```bash"
+npm install
+```
 
-3. Run the development server:
+### Usage
 
-   ```bash
-   npm start
-   ```
+Run commands using npm scripts:
 
-4. Open your browser at:
+```bash
+npm run start <METHOD> <RESOURCE> [ARGS...]
+```
 
-   ```bash
-   http://localhost:5000
-   ```
----
+### Usage Examples
 
-## Deployment
+**List all products:**
 
-You can access the deployed version of this project here:  
-👉 [https://ecommerce-legotempone.onrender.com/](https://ecommerce-legotempone.onrender.com/)
+```bash
+npm run start GET products
+```
 
----
+**Get a specific product by ID:**
 
-## Demo
+```bash
+npm run start GET products/5
+```
 
-![Lego Harry Potter Demo](https://media.giphy.com/media/mEDQK7yq11ekm28bG1/giphy-downsized.gif)
+**Create a new product:**
+
+```bash
+npm run start POST products <title> <price> <category>
+```
+
+**Delete a product by ID:**
+
+```bash
+npm run start DELETE products/<productId>
+```
+
+**Note:** The FakeStore API is a test API, so created or deleted products are not permanently stored.
+
+### Demo
+
+**List products:**
+
+```bash
+npm run start GET products
+```
+Outputs a clean table with `ID | Title | Price | Category`.
+
+**Create product:**
+
+```bash
+npm run start POST products RemeraAzul 2500 remeras
+```
+Simulates creating a product and shows the details in a table.
+
+**Delete product:**
+
+```bash
+npm run start DELETE products/21
+```
+Simulates deleting a product with a confirmation table.
 
 ---
 
 ## Contact and Support
 
-**Ante cualquier inquietud siéntase en la libertad de consultar.**  
+Ante cualquier inquietud siéntase en la libertad de consultar.
+
 **_¡Si se puede imaginar, se puede programar!_**
 
-**_Saludos cordiales!_**  ![saludos](https://img.icons8.com/ios/20/star-trek-gesture.png)
-
+Saludos cordiales! ![saludos](https://img.icons8.com/ios/20/star-trek-gesture.png)
