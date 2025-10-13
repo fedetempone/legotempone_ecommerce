@@ -40,7 +40,7 @@ This project is built using the following technologies and tools:
    ```
 
 3. Run the development server:
-   
+   ```bash
    npm start
    ```
 
