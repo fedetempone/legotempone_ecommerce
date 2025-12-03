@@ -1,68 +1,60 @@
-# LegoTempone - E-commerce Store
+# Proyecto Final API REST
+# Backend para tienda - Talentotech
+## Sobre el proyecto
+Este es un backend simple hecho como proyecto final para Talentotech.
+El objetivo es manejar productos de una tienda con un CRUD basico y autenticacion con JWT.
+Permite listar productos, crear nuevos, editarlos y borrarlos.
 
-## About the Project
-
-**LegoTempoNE** is a responsive e-commerce website developed as a final project for **TalentoTech**.  
-It features product browsing, detailed product views, shopping cart management, user authentication, and more — all built with **React**, including validations and smooth UX interactions.
-
----
+Las rutas GET son publicas y las demas requieren validacion con token.
 
 ## Technologies & Tools Used
-
-This project is built using the following technologies and tools:
-
-- ![html-logo](https://img.icons8.com/color/25/000000/html-5--v1.png) HTML5  
-- ![css-logo](https://img.icons8.com/color/25/000000/css3.png) CSS3  
-- ![js-logo](https://img.icons8.com/color/25/000000/javascript--v1.png) JavaScript (ES6+)  
+- ![Node.js Logo](https://img.icons8.com/color/25/000000/nodejs.png)**Node.js**
+- ![JavaScript Logo](https://img.icons8.com/color/25/000000/javascript--v1.png) **JavaScript (ES6+)**
+- ![API Logo](https://img.icons8.com/fluency/25/api-settings.png) **Fetch API** for HTTP requests
+- ![Terminal Logo](https://img.icons8.com/ios-filled/25/000000/command-line.png) **Command-line interface (CLI)** for terminal interaction
+- ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control
 - ![react-logo](https://img.icons8.com/ios/25/000000/react-native.png) React
-- ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control  
-- ![vite-logo](https://img.icons8.com/fluency/25/vite.png) Vite (Build tool & dev server)
-- ![sweetalert2](https://img.icons8.com/fluency/25/error.png) SweetAlert2 for elegant alerts and notifications  
-- ![react-router](https://img.icons8.com/fluency/25/compass.png) React Router for SPA navigation  
-- ![react-logo](https://img.icons8.com/color/25/000000/react-native.png) Context API for global state management  
-  
----
 
-## Getting Started
+## Installation
+1. Clonar el repo:
+git clone https://github.com/fedetempone/talentotech-backend-finalProject.git
+2. Instalar dependencias:
+npm install
+3. Crear archivo .env con las variables:
+PORT=5000
+JWT_SECRET=changeme
+4. Ejecutar servidor:
+5. npm start
 
-### Installation
+## Endpoints
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/fedetempone/legotempone_ecommerce.git
-   cd legotempone_ecommerce
-   cd finalproject
-   ```
+### Publics
+- GET /api/products
+- GET /api/products/:id
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Protects (token required)
+- POST /api/products/create
+- PUT /api/products/:id
+- DELETE /api/products/:id
 
-3. Run the development server:
-   ```bash
-   npm start
-   ```
+## Autentication"
+Para obtener un token hacer un POST a /api/auth/login con este body:
+{
+ username: admin,"
+ password: password123"
+}
 
-4. Open your browser at:
-   ```bash
-   http://localhost:5000
-   ```
-   
----
+Si las credenciales son validas, devuelve un token para usar en los endpoints protegidos.
+Ejemplo uso en header:
+Authorization: Bearer token_aqui
 
-## Deployment
+## Notes
+- Si falta token o es invalido devuelve 401
+- Los productos se guardan en firebase
+- El proyecto se hizo como entrega final
 
-You can access the deployed version of this project here:  
-👉 [https://ecommerce-legotempone.onrender.com/](https://ecommerce-legotempone.onrender.com/)
-
----
-
-## Demo
-
-![Lego Harry Potter Demo](https://media.giphy.com/media/mEDQK7yq11ekm28bG1/giphy-downsized.gif)
-
----
+## Deploy
+Se puede ejecutar en local o subir a cualquier servicio de node.
 
 ## Contact and Support
 
