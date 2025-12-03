@@ -10,7 +10,6 @@ Las rutas GET son publicas y las demas requieren validacion con token.
 ## Technologies & Tools Used
 - ![Node.js Logo](https://img.icons8.com/color/25/000000/nodejs.png)**Node.js**
 - ![JavaScript Logo](https://img.icons8.com/color/25/000000/javascript--v1.png) **JavaScript (ES6+)**
-- ![API Logo](https://img.icons8.com/fluency/25/api-settings.png) **Fetch API** for HTTP requests
 - ![Terminal Logo](https://img.icons8.com/ios-filled/25/000000/command-line.png) **Command-line interface (CLI)** for terminal interaction
 - ![git-logo](https://img.icons8.com/color/25/000000/git.png) Git for version control
 - ![react-logo](https://img.icons8.com/ios/25/000000/react-native.png) React
