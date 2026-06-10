@@ -49,48 +49,38 @@ export const registerUser = async (req, res) => {
 // en cada request protegida todo eso lo hace a traves de authMiddleware(Authorization: Bearer <token>)
 
 export const loginUser = async (req, res) => {
-  const JWT_SECRET = process.env.JWT_SECRET;
+  const JWT_SECRET = process.env.JWT_SECRET; 
 
   try {
     const { username, password } = req.body;
 
-    // 1. Log para verificar qué llega desde el frontend
-    console.log("Intento de login recibido para el usuario:", username);
-
-    if (!username || !password) {
+    if (!username || !password)
       return res.status(400).json({ message: 'Faltan campos' });
-    }
 
-    // 2. Buscamos en la base de datos
-    // Usamos .trim() para evitar problemas con espacios accidentales
-    const user = await User.findOne({ username: username.trim() });
-
-    // 3. Si no existe, lo logueamos en consola para confirmar la conexión a la DB
-    if (!user) {
-      console.log(`Error: El usuario '${username}' no existe en la base de datos conectada.`);
+    const user = await User.findOne({ username });
+    if (!user)
       return res.status(400).json({ message: 'Usuario no encontrado' });
-    }
 
-    // 4. Comparación de contraseña
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      console.log(`Error: Contraseña incorrecta para el usuario '${username}'`);
+    if (!isMatch)
       return res.status(400).json({ message: 'Contraseña incorrecta' });
-    }
 
-    // 5. Generación del token
+    // aca es donde estoy creando como un perfil digital firmado con mi secreto (jwt_secret)
+    // esta firma se asegura de 2 cosas, que el contenido del token no fue alterado y que solo lo puede
+    // validar y verificar el servidor que conoce el secreto/jwt_secret..
+    // calramente el expiresIn 1d signifcia q este token expira en un dia
+    // basciamente es como darle al usuario un pase libre con foto dni y la firma del jefe (osea yo)
+    // mientras este pase este vigente el usuario puede entrar a zonas protegidas del sistema
     const token = jwt.sign(
       { id: user._id, username: user.username },
       JWT_SECRET,
       { expiresIn: '1d' }
     );
 
-    console.log(`Login exitoso para: ${username}`);
     res.json({ token, username: user.username });
-
   } catch (error) {
-    console.error("Error crítico en loginUser:", error);
-    res.status(500).json({ message: 'Error interno del servidor' });
+    console.error(error);
+    res.status(500).json({ message: 'Error servidor' });
   }
 };
 
